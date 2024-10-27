@@ -28,7 +28,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { fullUrl } = JSON.parse(req.body);
+    const { fullUrl } = req.body;
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     const siteUrl = fullUrl || req.headers['referer'] || "N/A";
 
