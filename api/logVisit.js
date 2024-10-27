@@ -30,7 +30,7 @@ export default async function handler(req, res) {
         const ip = req.headers['x-forwarded-for'] || "N/A";
         const siteUrl = fullUrl || req.headers['referer'] || "N/A";
 
-        const { country, countryCode } = await getCountryByIP(ip);
+        const { country, countryCode } = await getCountryDataByIP(ip);
 
         await sql`
       INSERT INTO visitors (ip_address, site_url, country, countryCode) VALUES (${ip}, ${siteUrl}, ${country}, ${countryCode})
