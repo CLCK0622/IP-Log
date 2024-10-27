@@ -8,7 +8,7 @@
       "build": "vercel build"
     },
     "dependencies": {
-      "@vercel/postgres": "^1.0.0"
+      "@vercel/postgres": "^0.10.0"
     }
   }
   
