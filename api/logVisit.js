@@ -1,18 +1,21 @@
 import { sql } from '@vercel/postgres';
 
-async function getCountryByIP(ip) {
+async function getCountryDataByIP(ip) {
     try {
-        const response = await fetch(`http://ip-api.com/json/${ip}`);
-        const data = await response.json();
-        if (data.status === "success") {
-            return data.country || "Unknown";
-        }
-        return "Unknown";
+      const response = await fetch(`http://ip-api.com/json/${ip}`);
+      const data = await response.json();
+      if (data.status === "success") {
+        return {
+          country: data.country || "Unknown",
+          countryCode: data.countryCode || ""
+        };
+      }
+      return { country: "Unknown", countryCode: "" };
     } catch (error) {
-        console.error("Error fetching country data:", error);
-        return "Unknown";
+      console.error("Error fetching country data:", error);
+      return { country: "Unknown", countryCode: "" };
     }
-}
+  }
 
 export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -27,10 +30,10 @@ export default async function handler(req, res) {
         const ip = req.headers['x-forwarded-for'] || "N/A";
         const siteUrl = fullUrl || req.headers['referer'] || "N/A";
 
-        const country = await getCountryByIP(ip);
+        const { country, countryCode } = await getCountryByIP(ip);
 
         await sql`
-      INSERT INTO visitors (ip_address, site_url, country) VALUES (${ip}, ${siteUrl}, ${country})
+      INSERT INTO visitors (ip_address, site_url, country, countryCode) VALUES (${ip}, ${siteUrl}, ${country}, ${countryCode})
     `;
 
         res.status(200).json({ message: 'logged successfully' });

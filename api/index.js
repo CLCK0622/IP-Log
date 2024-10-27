@@ -21,7 +21,8 @@ export default async function handler(req, res) {
         <table>
           <tr>
             <th>IP Address</th>
-            <th>Visit Timestamp</th>
+            <th>Country</th>
+            <th>Visit Time</th>
             <th>Site URL</th>
           </tr>`;
 
@@ -32,7 +33,7 @@ export default async function handler(req, res) {
       html += `
           <tr>
             <td>${row.ip_address}</td>
-            <td>${row.country || 'Unknown'}</td>
+            <td>${row.country || 'Unknown'} <img src="https://flagsapi.com/${row.countryCode}/flat/64.png"></td>
             <td>${visitTime} (GMT+8)</td>
             <td>${row.site_url || 'N/A'}</td>
           </tr>`;
