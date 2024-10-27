@@ -6,30 +6,36 @@ export default async function handler(req, res) {
 
     let html = `
       <html>
-      <head><title>IP Log</title></head>
+      <head>
+        <title>IP Log</title>
+      </head>
       <body>
         <h1>IP Logs</h1>
-        <table border="1">
+        <table>
           <tr>
             <th>IP Address</th>
             <th>Visit Timestamp</th>
+            <th>Site URL</th>
           </tr>`;
+
     rows.forEach(row => {
       html += `
           <tr>
             <td>${row.ip_address}</td>
-            <td>${row.visit_timestamp}</td>
+            <td>${new Date(row.visit_timestamp).toLocaleString()}</td>
+            <td>${row.site_url || 'N/A'}</td>
           </tr>`;
     });
+
     html += `
         </table>
       </body>
       </html>`;
-      
+
     res.setHeader('Content-Type', 'text/html');
     res.status(200).send(html);
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching IP logs:", error);
     res.status(500).send('Failed to load IP logs');
   }
 }
