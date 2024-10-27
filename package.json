@@ -1,13 +1,15 @@
 {
-    "name": "iplog-project",
-    "version": "1.0.0",
-    "description": "A project to log IP addresses and referrer URLs.",
-    "main": "index.js",
-    "scripts": {
-      "dev": "vercel dev"
-    },
-    "dependencies": {
-      "@vercel/postgres": "^0.10.0"
-    }
+  "name": "iplog-project",
+  "version": "1.0.0",
+  "description": "A project to log IP addresses and referrer URLs.",
+  "main": "api/index.js",
+  "scripts": {
+    "local-dev": "vercel dev"
+  },
+  "dependencies": {
+    "@vercel/postgres": "^0.10.0"
+  },
+  "devDependencies": {
+    "vercel": "^37.12.1"
   }
-  
+}

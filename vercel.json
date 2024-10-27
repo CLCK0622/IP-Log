@@ -1,11 +1,11 @@
 {
-    "functions": {
-      "api/*.js": {
-        "runtime": "nodejs16.x"
-      }
+    "engines": {
+        "node": "20.x"
     },
     "routes": [
-      { "src": "/", "dest": "/api/index.js" }
+        {
+            "src": "/",
+            "dest": "/api/index.js"
+        }
     ]
-  }
-  
+}
