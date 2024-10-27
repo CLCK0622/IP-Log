@@ -19,10 +19,14 @@ export default async function handler(req, res) {
           </tr>`;
 
     rows.forEach(row => {
+        const visitTime = new Date(row.visit_timestamp).toLocaleString("en-US", {
+            timeZone: "Asia/Shanghai"
+          });
       html += `
           <tr>
             <td>${row.ip_address}</td>
-            <td>${new Date(row.visit_timestamp).toLocaleString()}</td>
+            <td>${row.country || 'Unknown'}</td>
+            <td>${visitTime} (GMT+8)</td>
             <td>${row.site_url || 'N/A'}</td>
           </tr>`;
     });
