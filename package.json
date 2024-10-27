@@ -4,8 +4,7 @@
     "description": "A project to log IP addresses and referrer URLs.",
     "main": "index.js",
     "scripts": {
-      "dev": "vercel dev",
-      "build": "vercel build"
+      "dev": "vercel dev"
     },
     "dependencies": {
       "@vercel/postgres": "^0.10.0"
