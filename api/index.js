@@ -33,7 +33,7 @@ export default async function handler(req, res) {
       html += `
           <tr>
             <td>${row.ip_address}</td>
-            <td>${row.country || 'Unknown'} <img src="https://flagsapi.com/${row.countryCode}/flat/64.png"></td>
+            <td>${row.country || 'Unknown'} <img src="https://flagsapi.com/${row.country_code}/flat/64.png"></td>
             <td>${visitTime} (GMT+8)</td>
             <td>${row.site_url || 'N/A'}</td>
           </tr>`;
