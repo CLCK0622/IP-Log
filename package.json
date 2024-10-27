@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A project to log IP addresses and referrer URLs.",
   "main": "api/index.js",
+  "type": "module",
   "scripts": {
     "local-dev": "vercel dev"
   },
