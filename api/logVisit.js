@@ -16,8 +16,9 @@ async function getCountryByIP(ip) {
 
 export default async function handler(req, res) {
   try {
-    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    const siteUrl = req.headers['referer'] || "N/A";
+    const { fullUrl } = req.body;
+    const ip = req.headers['x-forwarded-for'] || "N/A";
+    const siteUrl = fullUrl || req.headers['referer'] || "N/A";
 
     const country = await getCountryByIP(ip);
 
@@ -25,9 +26,9 @@ export default async function handler(req, res) {
       INSERT INTO visitors (ip_address, site_url, country) VALUES (${ip}, ${siteUrl}, ${country})
     `;
 
-    res.status(200).json({ message: 'IP, country, and site URL logged successfully' });
+    res.status(200).json({ message: 'logged successfully' });
   } catch (error) {
     console.error("Database error:", error);
-    res.status(500).json({ message: 'Failed to log IP and site URL', error: error.message });
+    res.status(500).json({ message: 'Failed to log', error: error.message });
   }
 }

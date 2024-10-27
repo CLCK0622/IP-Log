@@ -8,6 +8,13 @@ export default async function handler(req, res) {
       <html>
       <head>
         <title>IP Log</title>
+        <style>
+          body { font-family: Arial, sans-serif; padding: 20px; }
+          table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+          th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+          th { background-color: #f4f4f4; }
+          h1 { color: #333; }
+        </style>
       </head>
       <body>
         <h1>IP Logs</h1>
