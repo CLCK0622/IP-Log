@@ -1,15 +1,14 @@
 {
-  "name": "iplog-project",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@vercel/postgres": "^0.10.0"
+    "name": "iplog-project",
+    "version": "1.0.0",
+    "description": "A project to log IP addresses and referrer URLs.",
+    "main": "index.js",
+    "scripts": {
+      "dev": "vercel dev",
+      "build": "vercel build"
+    },
+    "dependencies": {
+      "@vercel/postgres": "^1.0.0"
+    }
   }
-}
+  
